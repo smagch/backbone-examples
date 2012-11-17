@@ -1,0 +1,73 @@
+<html>
+<head>
+<style>
+
+body {
+  background: #EAEAEA;
+  color: #2B2B2B;
+}
+
+h1 {
+  margin: 20px 0 20px 10px;
+  color: #7E7E7E;
+}
+
+ul#item-view {
+  list-style: none;
+  width: 400px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+ul#item-view li {
+  border-top: 1px solid gray;
+  padding: 0 40px 20px;
+  cursor: pointer;
+}
+
+ul#item-view li:hover {
+  background: #F9F9F9;
+}
+
+ul#item-view li.selected {
+  background: #DDF6F0;
+}
+
+p.user {
+  font-weight: bold;
+}
+
+#json-view {
+  position: fixed;
+  overflow: hidden;
+  left: 460px;
+  top: 100px;
+}
+
+</style>
+</head>
+<body>
+
+  <h1>Recent HN Comments</h1>
+  <ul id='item-view'></ul>
+  <div id='json-view'></div>
+
+  <script id='item-template' type='text/template'>
+    <% _.each(models, function (model) { %>
+      <li data-id="<%= model.id %>">
+        <p class='user'><%= model.username %></p>
+        <%= model.text %>
+      </li>
+    <% }); %>
+  </script>
+</body>
+<script src='../js/lib/jquery.js'></script>
+<script src='../js/lib/underscore.js'></script>
+<script src='../js/lib/backbone.js'></script>
+<script src='./js/models/item.js'></script>
+<script src='./js/collections/item.js'></script>
+<script src='./js/views/item.js'></script>
+<script src='./js/views/json.js'></script>
+<script src='./js/main.js'></script>
+</html>
