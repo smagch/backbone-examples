@@ -15,7 +15,6 @@
 
   global.JsonView = Backbone.View.extend({
     initialize: function (options) {
-      this.template = options.template;
       this.collection
         .on('select', this.select, this)
         .on('deselect', this.deselect, this);
