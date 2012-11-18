@@ -34,9 +34,9 @@
       var model = this.get(id);
       if (!model) throw new Error('invlid id : ' + id);
 
-      // deselect if when "select" call to selected model
+      // balk if when the modal is already selected
       if (this._selected === model) {
-        return this.deselect();
+        return;
       }
 
       // selected model should be single
