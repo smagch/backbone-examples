@@ -60,45 +60,71 @@ p.user {
   top: 100px;
 }
 
-ul#filter-view {
+.button-group {
   list-style: none;
-  list-style-position:inside;
-  margin: 0 0 30px 10px;
+  margin: 0;
   padding: 0;
-  display: inline;
-  border: 1px solid black;
+  display: inline-block;
   width: auto;
-  line-height: 30px;
+  line-height: 20px;
 }
 
-ul#filter-view li {
-  display: inline;
+.button-group li {
+  display: block;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  float: left;
   cursor: pointer;
   margin: 0;
   padding: 0 6px;
 }
 
-ul#filter-view li + li {
+.button-group li:first-child {
   border-left: 1px solid black;
 }
 
-ul#filter-view li.active {
+.button-group li:last-child {
+  border-right: 1px solid black;
+}
+
+.button-group li + li {
+  border-left: 1px solid black;
+}
+
+.button-group li.active {
   background: #7C9999;
   cursor: default;
 }
 
-ul#filter-view li:hover {
-  
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
 }
 
 </style>
 </head>
 <body>
-
-  <h1>Recent HN Comments</h1>
-  <ul id='filter-view'>
-    <li data-type='comment'>comments</li><li data-type='submission'>submissions</li>
-  </ul>
+  <h1>HN search</h1>
+  <div id='filter-view'>
+    <ul class='button-group clearfix'>
+      <li data-type='comment'>comments</li>
+      <li data-type='submission'>submissions</li>
+    </ul>
+    <ul class='button-group clearfix'>
+      <li data-sort='create_ts'>date</li>
+      <li data-sort='points'>point</li>
+      <li data-sort='num_comments'>comment</li>
+    </ul>
+  </div>
   <ul id='item-view'></ul>
   <div id='json-view'></div>
 

@@ -40,6 +40,7 @@
     collection: itemCollection,
     defaults: {
       type: 'comment'
+    , sort: 'create_ts'
     }
   });
 

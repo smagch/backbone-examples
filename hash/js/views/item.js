@@ -30,7 +30,7 @@
   , get: function (id) {
       return this.$('[data-id=' + id + ']');
     }
-  , hashChange: function (collection) {
+  , hashChange: function (collection, options) {
       this.$el.css('opacity', 0.5);
     }
   , select: function (model, options) {

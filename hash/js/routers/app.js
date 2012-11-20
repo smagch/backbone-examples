@@ -10,14 +10,20 @@
 
   /**
    * Application Router
-   *   #comment - show comments
-   *   #submission - show submissions
+   *   # type
+   *     - comment
+   *     - submission
+   *   # sort
+   *     - create_ts
+   *     - points
+   *     - num_comments
    */
 
   global.AppRouter = Backbone.Router.extend({
     routes: {
       '': 'update',
-      ':type': 'update'
+      ':type': 'update',
+      ':type/:sort': 'update'
     },
     initialize: function (options) {
       this.collection = options.collection
@@ -25,11 +31,14 @@
       this.defaults = options.defaults;
     },
     hashChange: function (collection) {
-      this.navigate(collection.params().type);
+      var params = collection.params();
+      var hash = params.type + '/' + params.sort;
+      this.navigate(hash);
     },
-    update: function (type) {
+    update: function (type, sort) {
       var params = _.defaults({}, {
-        type: type
+        type: type,
+        sort: sort
       }, this.defaults);
       this.collection.params(params);
     }

@@ -20,6 +20,7 @@
    *
    * parameters
    *   - type: "comment" or "submission"
+   *   - sort: "create_ts" or "points" or "num_comments"
    */
 
   global.ItemCollection = Backbone.Collection.extend({
@@ -48,13 +49,13 @@
 
       _.extend(this._params, obj);
       this.trigger('hash', this, options);
-      this.fetch();
+      return this.fetch(options);
     },
     url: function () {
       var params = {
         'filter[fields][type]': this._params.type,
         limit: 20,
-        sortby: 'create_ts desc'
+        sortby: this._params.sort + ' desc'
       };
 
       return 'http://api.thriftdb.com/api.hnsearch.com/items/_search?'
