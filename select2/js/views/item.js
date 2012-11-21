@@ -36,7 +36,7 @@
       $target.removeClass('selected');
     }
   , render: function (collection, options) {
-      var json = collection.toVerboseJSON();
+      var json = collection.toJSON();
       var html = this.template({ models: json });
       this.$el.empty().html(html);
       return this;

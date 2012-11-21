@@ -10,7 +10,6 @@
   global.ItemModel = Backbone.Model.extend({
     toVerboseJSON: function () {
       var json = this.toJSON();
-      json.id = this.id;
       json.cid = this.cid;
       return json;
     },
