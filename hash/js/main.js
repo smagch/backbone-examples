@@ -31,7 +31,7 @@
   , collection: itemCollection
   });
 
-  var buttonView = new FilterView({
+  var filterView = new FilterView({
     el: '#filter-view'
   , collection: itemCollection
   });
