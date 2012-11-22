@@ -13,7 +13,7 @@
       this.template = options.template;
       this.collection
         .on('reset', this.render, this)
-        .on('hash', this.hashChange, this)
+        .on('filter', this.hashChange, this)
         .on('select', this.select, this)
         .on('deselect', this.deselect, this);
     }

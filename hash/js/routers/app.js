@@ -27,11 +27,10 @@
     },
     initialize: function (options) {
       this.collection = options.collection
-        .on('hash', this.hashChange, this);
+        .on('filter', this.hashChange, this);
       this.defaults = options.defaults;
     },
-    hashChange: function (collection) {
-      var params = collection.params();
+    hashChange: function (params) {
       var hash = params.type + '/' + params.sort;
       this.navigate(hash);
     },
@@ -40,7 +39,7 @@
         type: type,
         sort: sort
       }, this.defaults);
-      this.collection.params(params);
+      this.collection.filter(params);
     }
   });
 

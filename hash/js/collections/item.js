@@ -37,10 +37,7 @@
       }
       return false;
     },
-    params: function (obj, options) {
-      // getter
-      if (!obj) return _.clone(this._params);
-
+    filter: function (obj, options) {
       // balk if it obj has no changes
       if (!this.hasChange(obj)) return;
 
@@ -48,7 +45,7 @@
       this.deselect();
 
       _.extend(this._params, obj);
-      this.trigger('hash', this, options);
+      this.trigger('filter', _.clone(this._params), options);
       return this.fetch(options);
     },
     url: function () {
