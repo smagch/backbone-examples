@@ -115,7 +115,7 @@
         }
         xhr.resolve(value, 'success', xhr);
       });
-      return xhr;
+      return xhr.promise();
     }
   });
 
