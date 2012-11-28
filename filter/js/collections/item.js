@@ -54,10 +54,8 @@
     filter: function (obj, options) {
       // balk if it obj has no changes
       if (!this.hasChange(obj)) return;
-
       // deselect if there is selection
       this.deselect();
-
       _.extend(this._params, obj);
       this.trigger('filter', _.clone(this._params), options);
       return this.fetch(options);
@@ -76,25 +74,13 @@
     parse: function (res) {
       return res.results;
     },
-    toVerboseJSON: function () {
-      return this.map(function (model) {
-        return model.toVerboseJSON();
-      });
-    },
     select: function (id, options) {
       var model = this.get(id);
       if (!model) throw new Error('invlid id : ' + id);
-
       // balk if when the modal is already selected
-      if (this._selected === model) {
-        return;
-      }
-
+      if (this._selected === model) return;
       // selected model should be single
-      if (this._selected) {
-        this.deselect();
-      }
-
+      if (this._selected) this.deselect();
       this._selected = model;
       this.trigger('select', model, options);
       return this;
@@ -113,7 +99,6 @@
       var key = this.getFilterHash();
       var value = this.cache.get(key);
       var xhr;
-      // set cache
       if (!value) {
         xhr = Backbone.sync.call(this, method, model, options);
         xhr.done(function (res, msg, xhr) {
