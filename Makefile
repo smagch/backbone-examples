@@ -5,3 +5,4 @@ JSHINT_TARGETS = \
 
 lint:
 	@jshint --config ./fixtures/jshint-config.js $(JSHINT_TARGETS)
+	@echo "lint ok"
