@@ -23,6 +23,7 @@
     routes: {
       '': 'update',
       ':type': 'update',
+      ':type/': 'update',
       ':type/:sort': 'update'
     },
     initialize: function (options) {
