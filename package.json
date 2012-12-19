@@ -1,0 +1,17 @@
+{
+  "name": "backbone-examples",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "devDependencies": {
+    "jshint": "~0.9.1",
+    "uglify-js": "~2.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/smagch/backbone-examples.git"
+  },
+  "author": "smagch",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
