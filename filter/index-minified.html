@@ -1,0 +1,151 @@
+<html>
+<head>
+<style>
+
+body {
+  background: #EAEAEA;
+  color: #2B2B2B;
+}
+
+h1 {
+  margin: 20px 0 20px 10px;
+  color: #7E7E7E;
+}
+
+ul#item-view {
+  list-style: none;
+  width: 400px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+ul#item-view li {
+  border-top: 1px solid gray;
+  padding: 0 40px 20px;
+  cursor: pointer;
+}
+
+ul#item-view li:hover {
+  background: #F9F9F9;
+}
+
+ul#item-view li.selected {
+  background: #DDF6F0;
+  cursor: default;
+}
+
+p.user {
+  font-weight: bold;
+}
+
+.title {
+  font: "cursive";
+  color: #B54540;
+}
+
+.title a {
+  color: #B54540;
+  text-decoration: none;
+}
+
+.title a:hover {
+  text-decoration: underline;
+}
+
+#json-view {
+  position: fixed;
+  overflow: hidden;
+  left: 460px;
+  top: 100px;
+}
+
+.button-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: auto;
+  line-height: 20px;
+}
+
+.button-group li {
+  display: block;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  float: left;
+  cursor: pointer;
+  margin: 0;
+  padding: 0 6px;
+}
+
+.button-group li:first-child {
+  border-left: 1px solid black;
+}
+
+.button-group li:last-child {
+  border-right: 1px solid black;
+}
+
+.button-group li + li {
+  border-left: 1px solid black;
+}
+
+.button-group li.active {
+  background: #7C9999;
+  cursor: default;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+</style>
+</head>
+<body>
+  <h1>HN search</h1>
+  <div id='filter-view'>
+    <ul class='button-group clearfix'>
+      <li data-type='comment'>comments</li>
+      <li data-type='submission'>submissions</li>
+    </ul>
+    <ul class='button-group clearfix'>
+      <li data-sort='create_ts'>date</li>
+      <li data-sort='points'>point</li>
+      <li data-sort='num_comments'>comment</li>
+    </ul>
+  </div>
+  <ul id='item-view'></ul>
+  <div id='json-view'></div>
+
+  <script id='item-template' type='text/template'>
+    <% _.each(models, function (m) { %>
+      <li data-id="<%= m.id %>">
+        <p class='user'><%= m.username %></p>
+        <p class='title'>
+          <% if (m.url) { %>
+            <a href='<%= m.url %>'><%= m.title %></a>
+          <% } else { %>
+            <%= m.title %>
+          <% } %>
+        </p>
+        <p><%= m.text %></p>
+        <% if (m.discussion) { %>
+          on <span class='title'><%= m.discussion.title %><span>
+        <% } %>
+      </li>
+    <% }); %>
+  </script>
+</body>
+<script src='js/app.js'></script>
+</html>
